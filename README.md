@@ -106,6 +106,14 @@ Methods or routes:-
 
 - POST /auth/signup  {BODY: email, password} 
        create a new user
+- GET /auth/:id 
+       get a user by id
+- GET /auth?email
+       Find all user with a given email
+- PATCH /auth/:id {BODY: email, password}
+       update a user by id
+- DELETE /auth/:id
+       delete a user by id
 - POST /auth/login  {BODY: email, password}
        login a user
 - POST /auth/logout {optional}
@@ -126,3 +134,13 @@ Methods or routes:-
        report how much a vehicle was sold for
 - PATCH /reports {BODY: approved}
         approve or reject a report by user
+
+
+Controlles            Services               Repositories          Modules
+UserController        UserService            UserRepository         UserModule
+ReportController      ReportService          ReportRepository       ReportModule
+
+
+
+
+
