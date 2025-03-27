@@ -87,12 +87,42 @@ Check out a few resources that may come in handy when working with NestJS:
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+
+## What we are building
+
+User car pricing api
+
+- User signup with email and password
+- Users get and estimate for how much their car is worth based on the make, model, year and mileage
+- User can report what they sold their vehicle for
+- Admin have to approve reported sales
+
+
+Methods or routes:-
+
+- POST /auth/signup  {BODY: email, password} 
+       create a new user
+- POST /auth/login  {BODY: email, password}
+       login a user
+- POST /auth/logout {optional}
+       logout a user
+- POST /auth/refresh-token {optional}
+       refresh a user's token
+- POST /auth/forgot-password {optional}
+       forgot a user's password
+- POST /auth/reset-password {optional}
+       reset a user's password
+- POST /auth/verify-email {optional}
+       verify a user's email
+- POST /auth/resend-verification-email {optional}
+       resend a user's verification email
+- GET /reports {QS: make, model, year, mileage, longitude, latitude, price, status}
+       get an estimate for a car value
+- POST /reports {BODY: make, model, year, mileage, longitude, latitude, price, status}
+       report how much a vehicle was sold for
+- PATCH /reports {BODY: approved}
+        approve or reject a report by user
