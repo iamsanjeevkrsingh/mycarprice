@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -20,21 +20,32 @@ export class UsersService {
     // return this.userRepository.insert({ email, password });
   }
 
-  findOne(id: string) {
-    console.log(id);
+  findOne(id: number) {
+    // return this.userRepository.findOne({ where: { id } });
+    return this.userRepository.findOneBy({ id });
   }
 
   find(email: string) {
-    console.log(email);
-    return this.userRepository.find();
+    return this.userRepository.find({ where: { email } });
   }
 
-  update(id: string, email: string, password: string) {
-    console.log(id, email, password);
+  async update(id: number, attrs: Partial<User>) {
+    const user = await this.findOne(id);
+    if (!user) {
+      throw new NotFoundException('user not found');
+    }
+    Object.assign(user, attrs);
+    return this.userRepository.save(user);
+    // return this.userRepository.update(id, attrs);
   }
 
-  remove(id: string) {
-    console.log(id);
+  async remove(id: number) {
+    const user = await this.findOne(id);
+    console.log('ssss', user);
+    if (!user) {
+      throw new NotFoundException('user not found');
+    }
+    return this.userRepository.remove(user);
   }
 }
 
