@@ -143,4 +143,24 @@ ReportController      ReportService          ReportRepository       ReportModule
 
 
 
+one to one
 
+country -> capital
+car -> engine
+passport -> person
+person -> cell phone
+
+
+one to many // Many to one
+
+customers -> orders
+car -> parts
+country -> cities
+continent -> mountains
+
+many to many
+
+Trains -> Riders
+Classes -> Students
+Parties -> People
+Album -> Genre
